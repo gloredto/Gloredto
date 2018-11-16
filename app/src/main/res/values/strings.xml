@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MapIT</string>
+    <string name="desc">Image</string>
+    <string name="name">name</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="update">Update</string>
+    <string name="age">age</string>
+    <string name="bornwhere">bornWhere</string>
+    <string name="bornwhen">bornWhen</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="edit">edit</string>
+    <string name="save">save</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="changepassword">ChangePassword</string>
+    <string name="quote">quote</string>
+    <string name="new_password">new password</string>
 </resources>
