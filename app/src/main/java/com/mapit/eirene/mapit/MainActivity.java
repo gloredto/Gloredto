@@ -2,16 +2,25 @@ package com.mapit.eirene.mapit;
 
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mUserList = (ListView) findViewById(R.id.user_list);
-        profilePictureview = (ImageView) findViewById(R.id.user_profileview);
+//        profilePictureview = (ImageView) findViewById(R.id.user_profileview);
 
 
         userProfile = new UserProfile();
@@ -91,13 +101,36 @@ public class MainActivity extends AppCompatActivity {
                     final String userBornWhere = userProfile.getUserBornWhere();
                     final String userBornWhen = userProfile.getUserBornWhen();
                     final String userAge = userProfile.getUserAge();
+                    userProfile = ds.child("Status").child("Quote").getValue(UserProfile.class);
+                    final String userStatus = userProfile.getUserStatus();
+                    userProfile = ds.child("Status").child("Position").getValue(UserProfile.class);
+                    final Double userLatitude = userProfile.getUserLatitude();
+                    final Double userLongitude = userProfile.getUserLongitude();
+
+                    final String link = "https://www.google.com/maps/@" + userLatitude + "," + userLongitude + ",15z";
+                    final Spanned mapLink = Html.fromHtml(
+                            "<a href="+link+">"+link+"</a> ");
 
 
 
-                    arrayList.add(userName + "\n" +userBornWhere + "\n" +userBornWhen + "\n" +userAge);
+
+                    arrayList.add("Nama = " + userName + "\n" + "TTL = " + userBornWhere + ", " +userBornWhen + "\n" + "Umur = " + userAge + "\n"
+                    + "Status = " + userStatus + "\n" + "Position = " + userLatitude + ", " + userLongitude + "\n" +
+                    "Link to Google Map = " + mapLink);
+                    
+
+
+
+//                    LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+//                    final View view = inflater.inflate(R.layout.user_info, null);
+//
+//                    final TextView userLink = (TextView) view.findViewById(R.id.userLink);
+//                    userLink.setText(mapLink);
 
                 }
+
                 mUserList.setAdapter(adapter);
+
             }
 
             @Override
