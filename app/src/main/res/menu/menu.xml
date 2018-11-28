@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/profileMenu"
+        android:icon="@drawable/profileicon"
+        android:orderInCategory="200"
+        app:showAsAction="always"
+        android:title="Profile">
+    </item>
+
+    <item
+        android:id="@+id/homeMenu"
+        android:icon="@drawable/homeicon"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Home">
+    </item>
+
+    <item
+        android:id="@+id/statusMenu"
+        android:icon="@drawable/abouticon"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Status">
+    </item>
+
+    <item
+        android:id="@+id/mapsMenu"
+        android:icon="@drawable/abouticon"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Maps">
+    </item>
+
+    <item
+        android:id="@+id/aboutMenu"
+        android:icon="@drawable/abouticon"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="About">
+    </item>
+
+    <item
+        android:id="@+id/logoutMenu"
+        android:icon="@drawable/logouticon"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        android:title="Logout">
+    </item>
+
+</menu>
